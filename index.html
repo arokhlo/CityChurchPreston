@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Church Preston | A community of faith, hope and love</title>
+    <!-- Bootstrap & Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1e2b37;
+            line-height: 1.6;
+            background-color: #f8fafc;
+        }
+        :root {
+            --primary-color: #5E6273;
+            --primary-dark: #4a4e5c;
+            --accent-color: #9b8b7a;
+            --light-bg: #f5f3f0;
+            --gold-accent: #c6a43f;
+        }
+
+        /* ----- TOP SOCIAL BANNER WITH SEARCH ----- */
+        .top-social-banner {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e9f0;
+            padding: 8px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1040;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+        .top-social-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .site-logo {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+        .top-brand-text {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+        
+        /* SEARCH BOX - ENHANCED */
+        .top-search-box {
+            flex: 1;
+            max-width: 300px;
+            margin: 0 15px;
+            position: relative;
+        }
+        .top-search-box input {
+            width: 100%;
+            padding: 8px 12px 8px 40px;
+            border: 1px solid #e0e4e9;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background-color: #f8fafd;
+        }
+        .top-search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(94,98,115,0.1);
+            background-color: white;
+        }
+        .top-search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #7f8a9a;
+            font-size: 0.95rem;
+        }
+        
+        /* SEARCH RESULTS DROPDOWN - ENHANCED */
+        .search-results-dropdown {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 1050;
+            display: none;
+            border: 1px solid #eef2f6;
+        }
+        .search-results-dropdown.active {
+            display: block;
+        }
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f3f7;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .search-result-item:hover {
+            background-color: #f5f7fc;
+        }
+        .search-result-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        .search-result-snippet {
+            font-size: 0.9rem;
+            color: #6a788b;
+        }
+        .search-result-snippet mark {
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 2px 0;
+            border-radius: 2px;
+            font-weight: 500;
+        }
+        .no-results {
+            padding: 30px;
+            text-align: center;
+            color: #6a788b;
+        }
+        
+        .top-social-icons {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .top-social-icons a {
+            color: #4b5563;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f3f7;
+        }
+        .top-social-icons a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ----- NAVIGATION (#5E6273) ----- */
+        .navbar {
+            background: #5E6273 !important;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 58px;
+            width: 100%;
+            z-index: 1030;
+            padding: 0.5rem 1rem;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .navbar-brand img {
+            height: 36px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        .nav-link {
+            color: rgba(255,255,255,0.95) !important;
+            font-weight: 600;
+            padding: 15px 12px !important;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            margin: 0 2px;
+            white-space: nowrap;
+            font-size: 1.2rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            color: white !important;
+        }
+
+        /* Mobile menu styles */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: #5E6273;
+                padding: 1rem;
+                border-radius: 0 0 12px 12px;
+                max-height: 80vh;
+                overflow-y: auto;
+            }
+            .nav-link {
+                padding: 12px 15px !important;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .nav-link:last-child {
+                border-bottom: none;
+            }
+        }
+
+        /* ----- HERO SECTION ----- */
+        .hero-section {
+            margin-top: 118px;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, #f9f7f5 0%, #ffffff 100%);
+            border-bottom: 1px solid #eaeef5;
+        }
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        .hero-subtitle {
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: #7d6b5c;
+            margin-bottom: 1.5rem;
+        }
+        .custom-button-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: all 0.3s;
+            background: transparent;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .custom-button-outline:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(94,98,115,0.2);
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        .carousel-figure figcaption {
+            text-align: center;
+            font-style: italic;
+            margin-top: 10px;
+            color: #5f6c80;
+            font-size: 0.95rem;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            padding: 20px;
+        }
+
+        /* ----- CONTENT CARDS ----- */
+        .content-card {
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.04);
+            margin-bottom: 2rem;
+            border: 1px solid #edf2f9;
+        }
+        h2 {
+            color: var(--primary-color);
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            border-left: 6px solid var(--primary-color);
+            padding-left: 1.3rem;
+        }
+        h3 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+        }
+        .btn-primary-custom {
+            background: #5E6273;
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 40px;
+            transition: 0.3s;
+            box-shadow: 0 6px 12px rgba(94,98,115,0.25);
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn-primary-custom:hover {
+            background: #4a4e5c;
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        /* event highlight */
+        .event-highlight {
+            background: linear-gradient(145deg, #f7f3ef, #ffffff);
+            border-radius: 30px;
+            padding: 2.5rem;
+            border: 1px solid #e3dad2;
+            text-align: center;
+        }
+        .event-day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .event-name {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #3d4a5c;
+            margin: 0.5rem 0;
+        }
+        .event-time {
+            background: var(--primary-color);
+            color: white;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            margin: 1rem 0;
+        }
+        .livestream-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #b3563b;
+            color: white;
+            padding: 0.5rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+        .verse-block {
+            background: var(--light-bg);
+            border-radius: 60px;
+            padding: 1.8rem 2.5rem;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #2e3f53;
+            margin: 2.5rem 0;
+            border-left: 6px solid var(--primary-color);
+        }
+
+        /* map & contact row */
+        .map-contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .map-box {
+            flex: 2;
+            min-width: 300px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+        }
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 340px;
+            display: block;
+        }
+        .contact-info-box {
+            flex: 1;
+            min-width: 260px;
+            background: #5E6273;
+            color: white;
+            padding: 2rem;
+            border-radius: 24px;
+        }
+        .contact-info-box a {
+            color: white;
+            text-decoration: none;
+        }
+        .contact-info-box a:hover {
+            text-decoration: underline;
+        }
+
+        /* ministry cards */
+        .ministry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .ministry-card {
+            background: #f9fafc;
+            border-radius: 20px;
+            padding: 1.8rem;
+            border: 1px solid #e9edf4;
+            transition: 0.2s;
+        }
+        .ministry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--primary-color);
+        }
+        .ministry-card i {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* partner grid */
+        .partner-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        .partner-item {
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid #e0e6ed;
+            font-weight: 500;
+        }
+
+        /* stay updated */
+        .updates-card {
+            background: linear-gradient(145deg, #f5f2ed, #ffffff);
+            text-align: center;
+            border-radius: 32px;
+            padding: 3rem;
+        }
+        .form-group {
+            display: flex;
+            max-width: 500px;
+            margin: 2rem auto 0.5rem;
+        }
+        .form-group input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid #cdd9eb;
+            border-radius: 60px 0 0 60px;
+            font-size: 1rem;
+        }
+        .form-group button {
+            padding: 1rem 2rem;
+            background: #5E6273;
+            color: white;
+            border: none;
+            border-radius: 0 60px 60px 0;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .form-group button:hover {
+            background: #4a4e5c;
+        }
+
+        /* footer */
+        footer {
+            background: #1f2937;
+            color: #e2e8f0;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+        footer a {
+            color: #b0c4de;
+            text-decoration: none;
+        }
+        .footer-title {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #5E6273;
+            padding-bottom: 0.5rem;
+        }
+        .social-icons a {
+            display: inline-block;
+            margin-right: 12px;
+            background: #374151;
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            background: #5E6273;
+        }
+
+        /* Search highlight styles for page content */
+        .search-highlight {
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 2px 0;
+            border-radius: 2px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        @media (max-width: 992px) {
+            .hero-section { margin-top: 110px; }
+            .hero-title { font-size: 2.5rem; }
+            .top-search-box { max-width: 200px; }
+        }
+        @media (max-width: 768px) {
+            .top-brand-text { display: none; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .top-search-box { max-width: 150px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- TOP SOCIAL BANNER WITH SEARCH -->
+    <div class="top-social-banner">
+        <div class="top-social-container">
+            <div class="logo-container">
+                <img src="logo.png" alt="City Church Preston" class="site-logo">
+            </div>
+            
+            <!-- SEARCH BOX - ENHANCED -->
+            <div class="top-search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="siteSearch" placeholder="Search this site..." autocomplete="off">
+                <!-- Search results dropdown -->
+                <div id="searchResults" class="search-results-dropdown"></div>
+            </div>
+            
+            <div class="top-social-icons">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand d-lg-none" href="#">
+                <img src="logo.png" alt="City Church">
+                <span>City Church</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#churchNavbar" aria-controls="churchNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="churchNavbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home" data-section="home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-section="about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faith" data-section="faith">Our Faith</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#connect" data-section="connect">Connect</a></li>
+                    <!-- NEW Safeguarding menu item -->
+                    <li class="nav-item"><a class="nav-link" href="#safeguarding" data-section="safeguarding">Safeguarding</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#give" data-section="give">Give</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-section="contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE TITLE AREA (dynamic) -->
+    <div class="page-title-container" id="pageTitleArea" style="background: white; margin-top: 118px; padding: 20px 0 15px; border-bottom: 1px solid #eaeef5;">
+        <div class="container">
+            <h1 class="page-title" id="pageTitle" style="color: var(--primary-color); font-weight: 700; margin-bottom: 0.3rem;">City Church Preston</h1>
+            <p class="page-subtitle" id="pageSubtitle" style="color: #5f6c80; font-size: 1.1rem;">A community of faith, hope and love</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT AREA (all sections with unique IDs) -->
+    <main class="container my-5">
+        <!-- HOME SECTION -->
+        <section id="home" class="content-section">
+            <!-- HERO SECTION (only shown on home) -->
+            <header class="hero-section" style="margin-top: 0; padding-top: 0; border-bottom: none;">
+                <div class="row align-items-center g-5">
+                    <div class="col-12 col-lg-6 text-center text-lg-start">
+                        <h1 class="hero-title">You are very <span style="color: #c6a43f;">Welcome</span></h1>
+                        <p class="hero-subtitle">A community of faith, hope and love</p>
+                        <p class="my-4 fs-5">Our St. Thomas' building is open on Sunday mornings between 10:00 - 13:00, with our Sunday Service from 11:00 - 12:00.</p>
+                        <a href="#about" class="custom-button-outline mb-4">
+                            <i class="fas fa-heart me-2"></i> Discover our story
+                        </a>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div id="churchCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner rounded-4">
+
+                                <div class="carousel-item active" data-bs-interval="1000">
+                                    <figure class="carousel-figure">
+                                        <img src="assets/images/church-main.webp" class="d-block w-100" alt="Team meeting with diverse participants">
+                                        <figcaption>City Church Preston</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <figure class="carousel-figure">
+                                        <img src="assets/images/church-hall.webp" class="d-block w-100" alt="Team meeting with diverse participants">
+                                        <figcaption>The Main Hall at City Church Preston</figcaption>
+                                    </figure>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <figure class="carousel-figure">
+                                        <img src="https://img.youtube.com/vi/cRFDbBE7Af4/hqdefault.jpg" 
+                                             class="d-block w-100" alt="Church community gathering">
+                                        <figcaption>Sunday worship together</figcaption>
+                                    </figure>
+                                </div>
+                                <div class="carousel-item">
+                                    <figure class="carousel-figure">
+                                        <img src="assets/images/church-SunTimes.webp" class="d-block w-100" alt="Team meeting with diverse participants">
+                                        <figcaption>Sunday Service Times</figcaption>
+                                    </figure>
+                                </div>
+
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#churchCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#churchCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Hello & Welcome -->
+            <div class="content-card">
+                <h2>Hello & Welcome</h2>
+                <p class="fs-4 fw-medium">We are a community of faith, hope and love.</p>
+                <p>We are a vibrant church and extremely active in the local community. We value and respect people and the contribution that they bring. We seek to help and empower individuals to live life to the full, to make great choices and to experience at first hand the abundant and blessed life that God offers through Jesus. We support people as they make their own journey to faith, and seek to encourage and help people on the way, at whatever stage of their journey they are at.</p>
+                <p>We want everyone to feel that they belong and are a valuable and contributing part of our community of love, hope and faith. We believe that we are all accepted by God by his grace, and that God is not angry with us or judging us, as all our wrong-doings have been dealt with by Jesus sacrifice on the cross. The free gift of God's forgiveness opens up the opportunity equally to us all, to experience and enjoy relationship and peace with God.</p>
+            </div>
+
+            <!-- YouTube Video -->
+            <div class="content-card text-center">
+                <h2>Watch our introduction</h2>
+                <div style="margin: 20px 0; text-align: center;">
+                    <div style="position: relative; display: inline-block; max-width: 100%;">                         
+                        <a href="https://www.youtube.com/watch?v=yqi-cA89zx8&t=1183s" target="_blank" style="text-decoration: none; color: inherit;">
+                            <div style="position: relative;">
+                                <img src="https://img.youtube.com/vi/yqi-cA89zx8/hqdefault.jpg" 
+                                     alt="City Church Preston introduction video"
+                                     style="width: 100%; max-width: 560px; height: auto; border-radius: 20px; box-shadow: 0 15px 30px rgba(0,0,0,0.2);">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(198, 164, 63, 0.9); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: white; font-size: 40px; margin-left: 5px;">▶</span>
+                                </div>
+                            </div>
+                            <p style="margin-top: 15px; font-weight: 600; color: var(--primary-color);">Click to watch our introduction video</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sunday Gathering -->
+            <div class="content-card">
+                <h2>Sunday Gathering</h2>
+                <div class="event-highlight">
+                    <div class="event-day">SUNDAY, 11:00</div>
+                    <div class="event-name">SUNDAY SERVICE</div>
+                    <p class="mt-3">Open access: 10:30 - 13:00 | Service: 11:00 - 12:00</p>
+                    <div class="event-time">11:00 AM</div>
+                    <div class="livestream-badge mt-3"><i class="fas fa-video"></i> Livestream available</div>
+                    <div class="mt-4">
+                        <a href="#" class="btn-primary-custom me-2">Join Livestream</a>
+                    </div>
+                </div>
+                <div class="verse-block">
+                    <i class="fas fa-quote-left me-3 fs-1" style="color: var(--primary-color); opacity:0.3;"></i>
+                    "creating opportunities, facilitating connections"
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="content-section" style="display: none;">
+            <div class="content-card">
+                <p>We are a vibrant church and extremely active in the local community. We have people within our community from across the globe, from varying backgrounds and experiences.</p>
+                
+                <h3>Our Leadership Team</h3>
+                <p>We are a church that is part of the Assemblies of God, Great Britain and part of the Evangelical Alliance.</p>
+                <p>Our leadership team are mostly volunteers and they lead the church's activities in all areas, supported by our Lead Pastor, Rev. Phil Maltby. As a registered charity and limited company, our Trustees and Directors guide the church and ensure that our community acts in accordance with the law, strong morals and is ethically sound.</p>
+                
+                <h3>St Thomas' Centre</h3>
+                <p>Following a number of years as a community that met in the Preston North End Football Club, the Guild Hall and other similar venues, we were thrilled by God's goodness and favour as we bought outright a new venue. Historically our new venue was St. Thomas' Church, part of the Church of England, it is now used by our community of City Church Preston. Our community is the church and so we've named the building we use, St. Thomas' Centre.</p>
+                <p>It is our hope that St. Thomas' Centre is a resource to our community and the wider city.</p>
+            </div>
+        </section>
+
+        <!-- FAITH SECTION -->
+        <section id="faith" class="content-section" style="display: none;">
+            <div class="content-card">
+                <h2>What is Christianity all about?</h2>
+                <p class="fs-5">The message at the heart of Christianity is pretty simple: reconnecting humanity with a loving God.</p>
+                
+                <h3>Who is Jesus?</h3>
+                <p>He's the Christ. The King whom God himself had promised to send, who would put everything right by setting up a kingdom of justice and love. He's also the Son of God. God himself, entering the world as a human being. Jesus proved who he was by what he did. He healed people. He calmed storms. He raised the dead. By doing these things, the King was giving a glimpse of life in his kingdom. A perfect place, with no suffering, fear or death. It's the world we all want.</p>
+                
+                <h3>Why did Jesus come?</h3>
+                <p>To be rejected. But many people rejected Jesus. They thought they'd be happier making their own rules and living outside his kingdom. This rejection of the King is something we all do. Jesus called it sin. It damages our lives and will eventually leave us separated from the joy of being in the kingdom. God won't let those who reject the King live with him. So we face what Jesus called hell. An existence without anything good, forever.</p>
+                
+                <p><strong>Why did Jesus come? – To be killed.</strong> People rejected the King so violently that they killed him by nailing him to a cross. But his death wasn't a mistake by God – it was a masterstroke. On the cross, Jesus was cut off from God's friendship and goodness. He chose to experience hell – so that we don't have to. The sinless King died to take the punishment sin deserves. Jesus was opening the way into his kingdom.</p>
+                
+                <p><strong>Why did Jesus come – To rise again.</strong> Three days after his execution, his tomb was found to be empty. Over the next few weeks, many ate with Jesus. Dozens spoke with him. Hundreds saw him. Jesus the King could not be contained by death. He had risen!</p>
+                
+                <h3>What does this mean for us?</h3>
+                <p>So, today, right now, Jesus is inviting people to come into his kingdom. He tells us to repent and believe the good news. Repent means to turn around, to live with Jesus in charge instead of ourselves. Believe means to trust that Jesus has done everything we need to give us a place in his kingdom. Living with Jesus as King isn't easy. His followers will be rejected, just as he was. But they also live a life of deep security, satisfaction, and joy, knowing God and his forgiveness, being helped by his Spirit, and looking forward to the King's return, when he will finally establish his loving kingdom forever.</p>
+                <p class="fw-bold">Jesus offers all this to anyone and everyone who repents and believes.</p>
+            </div>
+        </section>
+
+        <!-- CONNECT SECTION -->
+        <section id="connect" class="content-section" style="display: none;">
+            <div class="content-card">
+                <h2>Get Involved</h2>
+                <p>At City Church Preston there are lots of things to get involved with. We wanted to highlight a few of the areas below that are making a difference in our community and the wider city.</p>
+                
+                <div class="ministry-grid">
+                    <div class="ministry-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Connect Groups</h4>
+                        <p>Small groups (6-15 people) meeting in homes to share food, pray and discuss the bible, developing great connections and lasting friendships.</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary mt-3">Find out more</a>
+                    </div>
+                    <div class="ministry-card">
+                        <i class="fas fa-female"></i>
+                        <h4>City Church Women</h4>
+                        <p>A community of women supporting each other, leaving heart-prints on our world. "Two people are better off than one" (Ecclesiastes 4:9).</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary mt-3">Find out more</a>
+                    </div>
+                    <div class="ministry-card">
+                        <i class="fas fa-child"></i>
+                        <h4>Kid's Ministry (JJ's)</h4>
+                        <p>Jesus for Juniors - arts, crafts, baking and fun trips for primary school aged children.</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary mt-3">Find out more</a>
+                    </div>
+                    <div class="ministry-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Students & Young Adults</h4>
+                        <p>Socials, free Sunday lunches, host family scheme. Open Fridays 20:00-22:00 at St Thomas' for coffee and chat.</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary mt-3">Find out more</a>
+                    </div>
+                    <div class="ministry-card">
+                        <i class="fas fa-male"></i>
+                        <h4>City Church Men</h4>
+                        <p>Monthly breakfasts, prayer, support and pub gatherings.</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary mt-3">Find out more</a>
+                    </div>
+                    <div class="ministry-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h4>Pastoral Support</h4>
+                        <p>Available on Sundays and during the week for questions, prayer or a visit.</p>
+                        <a href="#" class="btn btn-sm btn-outline-secondary mt-3">Find out more</a>
+                    </div>
+                </div>
+                
+                <h3 class="mt-4">Hope for Life</h3>
+                <p>Our response to significant and rising levels of food poverty in our city. Partnered with Stoneygate Children's Centre to identify families who need food. We currently support many families with monthly or emergency food parcels.</p>
+            </div>
+            
+            <div class="content-card">
+                <h2>Partnering</h2>
+                <p>We want to highlight some of the organisations we are part of / partner with. Here are some of the organisations that we work with:</p>
+                
+                <div class="partner-grid">
+                    <span class="partner-item">AOG GB</span>
+                    <span class="partner-item">A Rocha UK</span>
+                    <span class="partner-item">Central African Missions</span>
+                    <span class="partner-item">Light of the Gospel Ministries</span>
+                    <span class="partner-item">Hope Centre, Buenavista</span>
+                    <span class="partner-item">Mercy UK</span>
+                    <span class="partner-item">Diverse Church</span>
+                    <span class="partner-item">Open Doors</span>
+                    <span class="partner-item">FareShare UK</span>
+                </div>
+                <p class="small text-muted mt-3">*Where links are provided to external organisations, City Church Preston is not liable for the content on these websites.</p>
+            </div>
+        </section>
+
+        <!-- NEW SAFEGUARDING SECTION -->
+        <section id="safeguarding" class="content-section" style="display: none;">
+            <div class="content-card">
+                <h2>Our Commitment to Safeguarding</h2>
+                <p class="fs-5">At City Church Preston we are committed to safeguarding all who are part of our church community, and those we come into contact with.</p>
+                
+                <div class="bg-light p-4 rounded-4 my-4" style="border-left: 6px solid var(--primary-color);">
+                    <p class="mb-0"><strong>If you have any safeguarding concern, please contact our Safeguarding Co-ordinator:</strong></p>
+                    <p class="mt-3 mb-0 fs-5">Phil Maltby</p>
+                    <p><a href="mailto:phil.maltby@citychurchpreston.com">phil.maltby@citychurchpreston.com</a> | 07742 356565</p>
+                    <p class="mt-3 mb-0"><strong>If Phil is not available, please contact:</strong></p>
+                    <p>Paul Counsell, our Lead Pastor</p>
+                </div>
+                
+                <h3>Our Safeguarding Principles</h3>
+                <p>We are committed to:</p>
+                <ul class="list-unstyled">
+                    <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> <strong>Promoting a safer environment and culture</strong> - Creating spaces where everyone feels safe, valued and respected.</li>
+                    <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> <strong>Safely recruiting and supporting</strong> those with any responsibility related to children and vulnerable adults within the Church.</li>
+                    <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> <strong>Responding promptly</strong> to a safeguarding concern or allegation.</li>
+                    <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> <strong>Caring pastorally</strong> for victims/survivors of abuse and other affected persons.</li>
+                    <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> <strong>Caring pastorally</strong> for those who are the subject of concerns or allegations of abuse and other affected persons.</li>
+                    <li class="mb-3"><i class="fas fa-check-circle me-2" style="color: var(--primary-color);"></i> <strong>Responding to those</strong> that may pose a present risk to others.</li>
+                </ul>
+                
+                <div class="row mt-5">
+                    <div class="col-md-6 mb-4">
+                        <div class="p-4 bg-light rounded-4 h-100">
+                            <h4><i class="fas fa-file-pdf me-2" style="color: var(--primary-color);"></i> Safeguarding Policies</h4>
+                            <p>Download our safeguarding policies and documents:</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="#" class="text-decoration-none"><i class="fas fa-download me-2"></i>Safeguarding Policy (PDF)</a></li>
+                                <li class="mb-2"><a href="#" class="text-decoration-none"><i class="fas fa-download me-2"></i>Safe Ministry Policy (PDF)</a></li>
+                                <li class="mb-2"><a href="#" class="text-decoration-none"><i class="fas fa-download me-2"></i>Reporting Guidelines (PDF)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="p-4 bg-light rounded-4 h-100">
+                            <h4><i class="fas fa-external-link-alt me-2" style="color: var(--primary-color);"></i> External Resources</h4>
+                            <p>Useful external safeguarding resources:</p>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><a href="#" class="text-decoration-none" target="_blank"><i class="fas fa-arrow-right me-2"></i>Thirtyone:eight</a></li>
+                                <li class="mb-2"><a href="#" class="text-decoration-none" target="_blank"><i class="fas fa-arrow-right me-2"></i>NSPCC</a></li>
+                                <li class="mb-2"><a href="#" class="text-decoration-none" target="_blank"><i class="fas fa-arrow-right me-2"></i>Childline</a></li>
+                                <li class="mb-2"><a href="#" class="text-decoration-none" target="_blank"><i class="fas fa-arrow-right me-2"></i>Action on Elder Abuse</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box mt-4 p-4" style="background-color: #e7f3ff; border-left: 6px solid var(--primary-color); border-radius: 12px;">
+                    <h4>Reporting a Concern</h4>
+                    <p>If you have a safeguarding concern about a child or vulnerable adult, please don't hesitate to contact our safeguarding team. All concerns will be taken seriously and handled with sensitivity and confidentiality.</p>
+                    <p class="mb-0">In an emergency, always contact the police on <strong>999</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GIVE SECTION -->
+        <section id="give" class="content-section" style="display: none;">
+            <div class="content-card">
+                <p>City Church Preston is a registered charity in the United Kingdom and as such, we are regulated by the Charity Commission.</p>
+                <p>The work that we do throughout the city is only possible through the gifts and donations that people provide. We are so grateful for every person that gives and has given.</p>
+                
+                <div class="bg-light p-4 rounded-4 mt-4 text-center">
+                    <h4>Ways you can GIVE:</h4>
+                    <p class="mt-3">There are a number of ways that you can give to the work that we do. Please contact us for more information.</p>
+                    <a href="#contact" class="btn-primary-custom mt-3">Contact us about giving</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="content-section" style="display: none;">
+            <div class="content-card">
+                <div class="map-contact-row">
+                    <div class="map-box">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2355.6789!2d-2.7023!3d53.7649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487b3a0b9c1b2b2f%3A0x8e3b3f7c6d4e8f0a!2sSt%20Thomas'%20Centre%2C%20Lancaster%20Rd%20N%2C%20Preston%20PR1%202SQ!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" 
+                            allowfullscreen="" loading="lazy">
+                        </iframe>
+                    </div>
+                    <div class="contact-info-box">
+                        <h3 class="text-white border-bottom pb-2">Visit us</h3>
+                        <p><i class="fas fa-map-pin"></i> St. Thomas' Centre<br>Lancaster Road North<br>Preston PR1 2SQ</p>
+                        <p><i class="fas fa-phone-alt"></i> <a href="tel:+441772501222">01772 501222</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@citychurchpreston.com">info@citychurchpreston.com</a></p>
+                        <p><i class="fas fa-clock"></i> Open Sundays: 10:30 - 13:00<br>Service: 11:00 - 12:00</p>
+                    </div>
+                </div>
+                
+                <div class="row mt-4 g-4">
+                    <div class="col-md-6">
+                        <h4>Important info</h4>
+                        <p>We are an AOG GB church<br>A company limited by guarantee and registered in England and a registered charity.</p>
+                        <p>Registered Company Number 08522873<br>Registered Charity Number 1153061.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Compliance</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Safeguarding Policy</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Safe Ministry Policy</a></li>
+                            <li><a href="#">Charity Commission Report</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h4>Our Commitment to Safeguarding</h4>
+                <p>At City Church Preston we are committed to safeguarding all who are part of our church community, and those we come into contact with.</p>
+                <p>We do this by: -</p>
+                <ul>
+                    <li>Promoting a safer environment and culture</li>
+                    <li>Safely recruiting and supporting those with any responsibility related to children and vulnerable adults within the Church</li>
+                    <li>Responding promptly to a safeguarding concern or allegation</li>
+                    <li>Caring pastorally for victims/survivors of abuse and other affected persons</li>
+                    <li>Caring pastorally for those who are the subject of concerns or allegations of abuse and other affected persons</li>
+                    <li>Responding to those that may pose a present risk to others</li>
+                </ul>
+                <p>If you wish to speak to anyone regarding safeguarding at City Church Preston, Phil Maltby is our Safeguarding Co-ordinator. If Phil is not available please talk to Paul Counsell, our Lead Pastor. You can contact Phil at <a href="mailto:phil.maltby@citychurchpreston.com">phil.maltby@citychurchpreston.com</a> or on 07742 356565</p>
+            </div>
+        </section>
+
+        <!-- Stay updated section (appears on all pages) -->
+        <div class="content-card updates-card">
+            <h2 style="border-left-color: var(--primary-color);">Stay up to date</h2>
+            <p class="fs-5">Sign up to receive news and updates from City Church Preston.</p>
+            <form class="form-group" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <div class="text-secondary mt-4">We'd love to stay in touch.</div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h4 class="footer-title">City Church Preston</h4>
+                    <p>A community of faith, hope and love, active in Preston and welcoming everyone.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="footer-title">Contact</h4>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> St. Thomas' Centre, Lancaster Road North, Preston PR1 2SQ</p>
+                    <p><i class="fas fa-phone me-2"></i> <a href="tel:+441772501222">01772 501222</a></p>
+                    <p><i class="fas fa-envelope me-2"></i> <a href="mailto:info@citychurchpreston.com">info@citychurchpreston.com</a></p>
+                </div>
+                <div class="col-lg-4">
+                    <h4 class="footer-title">Quick links</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#home" class="footer-link">Home</a></li>
+                        <li class="mb-2"><a href="#about" class="footer-link">About</a></li>
+                        <li class="mb-2"><a href="#faith" class="footer-link">Our Faith</a></li>
+                        <li class="mb-2"><a href="#connect" class="footer-link">Connect</a></li>
+                        <li class="mb-2"><a href="#safeguarding" class="footer-link">Safeguarding</a></li>
+                        <li class="mb-2"><a href="#give" class="footer-link">Give</a></li>
+                        <li class="mb-2"><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="bg-light my-4">
+            <div class="row">
+                <div class="col text-center">
+                    <p>© 2026 City Church Preston. All rights reserved.</p>
+                    <p class="small">Registered Company Number 08522873 | Registered Charity Number 1153061</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // ============ MOBILE MENU AUTO-COLLAPSE FUNCTIONALITY ============
+        // Get the navbar collapse element and toggler button
+        const navbarCollapse = document.getElementById('churchNavbar');
+        const navbarToggler = document.querySelector('.navbar-toggler');
+
+        // Function to close mobile menu
+        function closeMobileMenu() {
+            if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                // Use Bootstrap's collapse method to close the menu
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                } else {
+                    // Fallback if Bootstrap instance not available
+                    navbarCollapse.classList.remove('show');
+                }
+            }
+        }
+
+        // Add click event listeners to all nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Close mobile menu after a short delay to allow the navigation to complete
+                setTimeout(closeMobileMenu, 100);
+            });
+        });
+
+        // Also close menu when clicking on footer links on mobile
+        document.querySelectorAll('.footer-link').forEach(link => {
+            link.addEventListener('click', function() {
+                setTimeout(closeMobileMenu, 100);
+            });
+        });
+
+        // ============ ENHANCED SEARCH FUNCTIONALITY - SEARCHES ALL VISIBLE CONTENT ============
+        
+        // Function to extract all text content from a section
+        function extractSectionContent(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (!section) return '';
+            
+            // Clone the section to avoid modifying the original
+            const clone = section.cloneNode(true);
+            
+            // Remove script and style elements
+            clone.querySelectorAll('script, style').forEach(el => el.remove());
+            
+            // Get text content and clean it up
+            let text = clone.textContent || '';
+            text = text.replace(/\s+/g, ' ').trim();
+            
+            return text;
+        }
+
+        // Build comprehensive search index from actual content
+        const searchIndex = [
+            { 
+                id: 'home', 
+                title: 'Home', 
+                keywords: ['welcome','community','faith','hope','love','vibrant','local','jesus','god','forgiveness','grace','belong','sunday','service','worship','gathering'],
+                content: extractSectionContent('home')
+            },
+            { 
+                id: 'about', 
+                title: 'About Us', 
+                keywords: ['about','leadership','team','phil maltby','pastor','trustees','directors','st thomas','centre','building','history','aog','assemblies of god','evangelical alliance'],
+                content: extractSectionContent('about')
+            },
+            { 
+                id: 'faith', 
+                title: 'Our Faith', 
+                keywords: ['faith','christianity','jesus','christ','son of god','cross','resurrection','died','rose again','sin','forgiveness','repent','believe','salvation','kingdom','heaven','hell','gospel'],
+                content: extractSectionContent('faith')
+            },
+            { 
+                id: 'connect', 
+                title: 'Connect & Get Involved', 
+                keywords: ['connect','groups','small groups','women','men','students','young adults','kids','children','jj','jesus for juniors','pastoral support','hope for life','food poverty','partner','aog','arocha','cam','mercy','diverse church','opendoors','fareshare'],
+                content: extractSectionContent('connect')
+            },
+            { 
+                id: 'safeguarding', 
+                title: 'Safeguarding', 
+                keywords: ['safeguarding','protection','children','vulnerable adults','safe','policy','phil maltby','reporting','concern','abuse','safety'],
+                content: extractSectionContent('safeguarding')
+            },
+            { 
+                id: 'give', 
+                title: 'Give', 
+                keywords: ['give','donate','donation','giving','charity','registered charity','support','gift','offering'],
+                content: extractSectionContent('give')
+            },
+            { 
+                id: 'contact', 
+                title: 'Contact Us', 
+                keywords: ['contact','address','phone','email','map','directions','st thomas centre','lancaster road','pr1 2sq','01772 501222','info','safeguarding','phil maltby','policy','compliance','charity commission'],
+                content: extractSectionContent('contact')
+            }
+        ];
+
+        const searchInput = document.getElementById('siteSearch');
+        const searchResults = document.getElementById('searchResults');
+        
+        // Store the last search query for highlighting
+        let lastSearchQuery = '';
+
+        // Enhanced search function with exact phrase matching
+        function performSearch(query) {
+            if (!query || query.trim() === '') {
+                return [];
+            }
+            
+            const searchTerm = query.toLowerCase().trim();
+            
+            return searchIndex.map(item => {
+                let score = 0;
+                const titleLower = item.title.toLowerCase();
+                const keywordsLower = item.keywords.map(k => k.toLowerCase());
+                const contentLower = item.content.toLowerCase();
+                
+                // Check for exact phrase match in title (highest priority)
+                if (titleLower.includes(searchTerm)) {
+                    score += 10;
+                }
+                
+                // Check for exact phrase match in keywords
+                if (item.keywords.some(k => k.toLowerCase().includes(searchTerm))) {
+                    score += 8;
+                }
+                
+                // Check for exact phrase match in content
+                if (contentLower.includes(searchTerm)) {
+                    score += 6;
+                }
+                
+                // For multi-word searches, also check if all individual words appear
+                const words = searchTerm.split(/\s+/).filter(w => w.length > 1);
+                if (words.length > 1) {
+                    const allWordsPresent = words.every(word => 
+                        titleLower.includes(word) || 
+                        keywordsLower.some(k => k.includes(word)) || 
+                        contentLower.includes(word)
+                    );
+                    
+                    if (allWordsPresent) {
+                        score += 5;
+                    }
+                }
+                
+                return { ...item, score };
+            })
+            .filter(item => item.score > 0)
+            .sort((a, b) => b.score - a.score);
+        }
+
+        // Highlight text in snippets
+        function highlightText(text, searchTerm) {
+            if (!searchTerm || searchTerm.trim() === '') {
+                return text;
+            }
+            
+            // Escape special regex characters in the search term
+            const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escapedTerm})`, 'gi');
+            return text.replace(regex, '<mark>$1</mark>');
+        }
+
+        function displaySearchResults(results, query) {
+            if (results.length === 0) {
+                searchResults.innerHTML = `<div class="no-results">No results found for "${query}"</div>`;
+                return;
+            }
+            
+            let html = '';
+            results.slice(0, 5).forEach(result => {
+                // Find a relevant snippet containing the search term
+                let snippet = result.content;
+                const searchTermLower = query.toLowerCase();
+                const snippetStart = Math.max(0, snippet.toLowerCase().indexOf(searchTermLower) - 40);
+                const snippetEnd = Math.min(snippet.length, snippetStart + 120);
+                
+                if (snippetStart > 0) {
+                    snippet = '...' + snippet.substring(snippetStart, snippetEnd) + '...';
+                } else {
+                    snippet = snippet.substring(0, 120) + '...';
+                }
+                
+                // Highlight the search term in the snippet
+                const highlightedSnippet = highlightText(snippet, query);
+                
+                html += `
+                    <div class="search-result-item" data-section="${result.id}">
+                        <div class="search-result-title">${result.title}</div>
+                        <div class="search-result-snippet">${highlightedSnippet}</div>
+                    </div>
+                `;
+            });
+            searchResults.innerHTML = html;
+            
+            // Add click handlers
+            document.querySelectorAll('.search-result-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    const section = this.dataset.section;
+                    lastSearchQuery = query; // Store the query before navigating
+                    showSection(section);
+                    searchInput.value = '';
+                    searchResults.classList.remove('active');
+                    
+                    // Close mobile menu if open
+                    setTimeout(closeMobileMenu, 100);
+                });
+            });
+        }
+
+        // Function to highlight search terms in the loaded content
+        function highlightSearchTermsInContent(searchTerm) {
+            if (!searchTerm || searchTerm.trim() === '') return;
+            
+            // First, remove any existing highlights
+            document.querySelectorAll('.search-highlight').forEach(el => {
+                const parent = el.parentNode;
+                parent.replaceChild(document.createTextNode(el.textContent), el);
+                parent.normalize();
+            });
+            
+            const contentArea = document.querySelector('main.container');
+            if (!contentArea) return;
+
+            // Escape special regex characters
+            const escapedTerm = searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            
+            // Create a regex that matches whole words or phrases
+            const regex = new RegExp(`(${escapedTerm})`, 'gi');
+
+            // Function to recursively walk through text nodes and highlight matches
+            function walkTextNodes(node) {
+                if (node.nodeType === 3) { // Text node
+                    const text = node.textContent;
+                    if (regex.test(text)) {
+                        const span = document.createElement('span');
+                        const parts = text.split(regex);
+                        
+                        parts.forEach((part, index) => {
+                            if (index % 2 === 1) { // Matched part
+                                const mark = document.createElement('mark');
+                                mark.className = 'search-highlight';
+                                mark.textContent = part;
+                                span.appendChild(mark);
+                            } else if (part) { // Non-matched part
+                                span.appendChild(document.createTextNode(part));
+                            }
+                        });
+                        
+                        node.parentNode.replaceChild(span, node);
+                    }
+                } else if (node.nodeType === 1 && !/^(script|style|mark)$/i.test(node.tagName)) {
+                    // Don't go into script or style tags, and avoid already highlighted content
+                    Array.from(node.childNodes).forEach(walkTextNodes);
+                }
+            }
+
+            // Walk through all text nodes in the content area
+            Array.from(contentArea.childNodes).forEach(walkTextNodes);
+        }
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            if (query.length > 1) {
+                const results = performSearch(query);
+                displaySearchResults(results, query);
+                searchResults.classList.add('active');
+            } else {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Close search results when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // ============ SINGLE PAGE APP NAVIGATION WITH UNIQUE URLS ============
+        const sections = {
+            home: document.getElementById('home'),
+            about: document.getElementById('about'),
+            faith: document.getElementById('faith'),
+            connect: document.getElementById('connect'),
+            safeguarding: document.getElementById('safeguarding'),
+            give: document.getElementById('give'),
+            contact: document.getElementById('contact')
+        };
+
+        const pageTitles = {
+            home: { title: 'City Church Preston - Home', subtitle: 'A community of faith, hope and love' },
+            about: { title: 'About Us - City Church Preston', subtitle: 'Our leadership, history and building' },
+            faith: { title: 'Our Faith - City Church Preston', subtitle: 'What we believe' },
+            connect: { title: 'Connect - City Church Preston', subtitle: 'Get involved with our community' },
+            safeguarding: { title: 'Safeguarding - City Church Preston', subtitle: 'Our commitment to keeping everyone safe' },
+            give: { title: 'Give - City Church Preston', subtitle: 'Support our work' },
+            contact: { title: 'Contact Us - City Church Preston', subtitle: 'Get in touch' }
+        };
+
+        function showSection(sectionId) {
+            // Hide all sections
+            Object.values(sections).forEach(section => {
+                if (section) section.style.display = 'none';
+            });
+            
+            // Show selected section
+            if (sections[sectionId]) {
+                sections[sectionId].style.display = 'block';
+            } else {
+                sections.home.style.display = 'block';
+                sectionId = 'home';
+            }
+            
+            // Update page title and subtitle
+            const titleInfo = pageTitles[sectionId] || pageTitles.home;
+            document.getElementById('pageTitle').textContent = titleInfo.title.split(' - ')[0];
+            document.getElementById('pageSubtitle').textContent = titleInfo.subtitle;
+            
+            // Update browser URL with hash (unique URL for each section)
+            window.location.hash = sectionId;
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.section === sectionId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Highlight search terms if there was a last search query
+            if (lastSearchQuery) {
+                // Small delay to ensure content is fully rendered
+                setTimeout(() => {
+                    highlightSearchTermsInContent(lastSearchQuery);
+                }, 100);
+            }
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Handle navigation clicks
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = this.dataset.section;
+                showSection(section);
+                
+                // Close mobile menu after navigation
+                setTimeout(closeMobileMenu, 100);
+            });
+        });
+
+        // Handle footer quick links
+        document.querySelectorAll('.footer-link, footer a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const hash = this.getAttribute('href');
+                if (hash && hash.startsWith('#')) {
+                    const section = hash.substring(1);
+                    if (sections[section]) {
+                        showSection(section);
+                        
+                        // Close mobile menu after navigation
+                        setTimeout(closeMobileMenu, 100);
+                    }
+                }
+            });
+        });
+
+        // Handle initial load and hash changes
+        function handleHashChange() {
+            const hash = window.location.hash.substring(1);
+            if (hash && sections[hash]) {
+                showSection(hash);
+            } else {
+                showSection('home');
+            }
+        }
+
+        window.addEventListener('hashchange', handleHashChange);
+        window.addEventListener('load', handleHashChange);
+    </script>
+</body>
+</html>
